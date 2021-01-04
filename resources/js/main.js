@@ -12,5 +12,23 @@ $(document).ready( function () {
 
     });
 
+    $('.delete-stock-category-button').on('click', function () {
+        var id = $(this).closest('a').attr("data-id");
+        $('#id-delete').val(id);
+        $('#modal-delete').modal({
+              show: true
+        });
+    });
+    
+    $('.edit-stock-category-button').on('click', function () {
+        var id = $(this).closest('a').attr("data-id");
+        var name = $(this).closest('a').attr("data-name");
+        $('#id-edit').val(id);
+        $('#category_name').val(name);
+        $('#modal-edit').modal({
+              show: true
+        });
+    });
+
 });
 

@@ -75,7 +75,7 @@
             <a href="{{ route('orders') }}" class="nav-link {{ request()->path() =='orders' ? "active" : "" }}">
               <i class="nav-icon fas fa-building"></i>
               <p>
-                Şirketler
+                Tedarikçiler
               </p>
             </a>
           </li>

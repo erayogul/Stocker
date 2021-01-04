@@ -34,13 +34,25 @@ Route::get('/employeeEdit/{id}', [MainController::class, 'EmployeeEdit'])->middl
 
 Route::get('/employeeUpdate', [MainController::class, 'EmployeeUpdate'])->middleware(['auth'])->name('employeeUpdate');
 
+Route::get('/manage-stock-category', [MainController::class, 'AllStockCategory'])->middleware(['auth'])->name('manage-stock-category');
+
+Route::get('/manage-stock-category/createNew', [MainController::class, 'createCategory'])->middleware(['auth'])->name('createStockCategory');
+
+Route::get('/delete-stock-category', [MainController::class, 'deleteStockCategory'])->middleware(['auth'])->name('delete-stock-category');
+
+Route::get('/edit-stock-category', [MainController::class, 'editStockCategory'])->middleware(['auth'])->name('edit-stock-category');
+
+
 Route::get('/stock', function () {
     return view('stock');
 })->middleware(['auth'])->name('stock');
 
-Route::get('/manage-stock-category', function () {
+/*Route::get('/manage-stock-category', function () {
     return view('categoryStock');
-})->middleware(['auth'])->name('manage-stock-category');
+})->middleware(['auth'])->name('manage-stock-category');*/
+
+
+
 
 Route::get('/orders', function () {
     return view('orders');

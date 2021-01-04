@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Stock;
+use App\Models\Stock_category;
 use View;
 
 
@@ -58,4 +60,41 @@ class MainController extends Controller
         ]);
     return redirect()->route('employeeEdit',[$request->id]);
     }
+
+
+
+    public function AllStockCategory(Request $request)
+    {
+        $categories = Stock_category::get();
+        return view('categoryStock',compact('categories'));
+    }
+    public function createCategory(Request $request)
+    {
+        $category = Stock_category::create([
+            'category_id' =>rand(10000,99999),
+            'category_name' => $request->category_name,
+        ]);
+        $categories = Stock_category::get();
+        return redirect()->route('manage-stock-category',compact('categories'));
+    }
+    
+    public function deleteStockCategory(Request $request)
+    {
+        $category = Stock_category::findOrFail($request->id);
+        $category->delete();
+        $categories = Stock_category::get();
+        return redirect()->route('manage-stock-category',compact('categories'));
+    }
+
+    public function editStockCategory(Request $request)
+    {
+        $category = Stock_category::findOrFail($request->id);
+        $category    ->update([
+            'category_name' => $request->category_name,
+        ]);
+        $categories = Stock_category::get();
+        return redirect()->route('manage-stock-category',compact('categories'));
+    }
+
+    
 }

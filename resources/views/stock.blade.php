@@ -21,6 +21,7 @@
                                 <th>Kategori</th>
                                 <th>Stok No</th>
                                 <th>Ürün Adı</th>
+                                <th>Tedarikçi</th>
                                 <th>Lokasyon</th>
                                 <th>Stok</th>
                                 <th>İşlem</th>
@@ -31,6 +32,7 @@
                                 <td><a href="#">Ofis Ürünleri</a></td>
                                 <td>45261</td>
                                 <td>Kalem</td>
+                                <td>abc</td>
                                 <td>Depo-1</td>
                                 <td>135</td>
                                 <td>
@@ -46,6 +48,9 @@
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Record">
                                         <i class="fas fa-trash red" style="font-size: 20px;margin-right: 10px; color:red; "></i>
                                     </a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Record">
+                                        <i class="fas fa-shopping-cart " style="font-size: 20px;margin-right: 10px; color:#03871d; "></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -54,6 +59,7 @@
                                 <th>Kategori</th>
                                 <th>Stok No</th>
                                 <th>Ürün Adı</th>
+                                <th>Tedarikçi</th>
                                 <th>Lokasyon</th>
                                 <th>Stok</th>
                                 <th>İşlem</th>
