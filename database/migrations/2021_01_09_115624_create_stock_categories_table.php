@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStockCategoryTable extends Migration
+class CreateStockCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStockCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_category', function (Blueprint $table) {
+        Schema::create('stock_categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_id');
             $table->string('category_name');
@@ -28,6 +28,6 @@ class CreateStockCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_category');
+        Schema::dropIfExists('stock_categories');
     }
 }

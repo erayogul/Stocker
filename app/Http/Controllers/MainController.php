@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Stock;
+use App\Models\Stock_categories;
 use App\Models\Stock_category;
 use View;
 
@@ -65,36 +66,82 @@ class MainController extends Controller
 
     public function AllStockCategory(Request $request)
     {
-        $categories = Stock_category::get();
+        $categories = Stock_categories::get();
         return view('categoryStock',compact('categories'));
     }
     public function createCategory(Request $request)
     {
-        $category = Stock_category::create([
+        $category = Stock_categories::create([
             'category_id' =>rand(10000,99999),
             'category_name' => $request->category_name,
         ]);
-        $categories = Stock_category::get();
+        $categories = Stock_categories::get();
         return redirect()->route('manage-stock-category',compact('categories'));
     }
     
     public function deleteStockCategory(Request $request)
     {
-        $category = Stock_category::findOrFail($request->id);
+        $category = Stock_categories::findOrFail($request->id);
         $category->delete();
-        $categories = Stock_category::get();
+        $categories = Stock_categories::get();
         return redirect()->route('manage-stock-category',compact('categories'));
     }
 
     public function editStockCategory(Request $request)
     {
-        $category = Stock_category::findOrFail($request->id);
+        $category = Stock_categories::findOrFail($request->id);
         $category    ->update([
             'category_name' => $request->category_name,
         ]);
-        $categories = Stock_category::get();
+        $categories = Stock_categories::get();
         return redirect()->route('manage-stock-category',compact('categories'));
     }
+
+    public function getStocks(Request $request)
+    {
+        $categories = Stock_categories::get();
+        $users = User::get();
+        $stocks = Stock::get();
+        return view('stock',compact('categories','users','stocks'));
+    }
+
+    public function createStock(Request $request)
+    {
+        $notification = 0;
+        $request->notification != null  ? $notification = 1 : $notification = 0;
+        $stocks = Stock::create([
+            'name' => $request->name,
+            'stock_id' => $request->stockNo,
+            'category' => $request->category,
+            'supplier' => $request->supplier,
+            'location' => $request->location,
+            'quantity' => $request->quantity,
+            'notification' => $notification,
+            'notificationUser' => $request->notificationPerson,
+            'notificationQuantity' => $request->notificationQuantity,
+        ]);
+        return redirect()->route('stock');
+    }
+    public function deleteStock(Request $request)
+    {
+        $stock = Stock::findOrFail($request->id);
+        $stock->delete();
+        return redirect()->route('stock');
+    }
+
+    public function changeStock(Request $request)
+    {
+        $stock = Stock::findOrFail($request->id);
+        $stock    ->update([
+            'quantity' => $request->newStockQuantity,
+        ]);
+        return redirect()->route('stock');
+    }
+
+    
+    
+
+    
 
     
 }

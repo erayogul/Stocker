@@ -42,10 +42,20 @@ Route::get('/delete-stock-category', [MainController::class, 'deleteStockCategor
 
 Route::get('/edit-stock-category', [MainController::class, 'editStockCategory'])->middleware(['auth'])->name('edit-stock-category');
 
+Route::get('/stock', [MainController::class, 'getStocks'])->middleware(['auth'])->name('stock');
 
-Route::get('/stock', function () {
+Route::get('/stock/createNew', [MainController::class, 'createStock'])->middleware(['auth'])->name('createStock');
+
+Route::get('/delete-stock', [MainController::class, 'deleteStock'])->middleware(['auth'])->name('delete-stock');
+
+Route::get('/change-stock', [MainController::class, 'changeStock'])->middleware(['auth'])->name('change-stock');
+
+Route::get('/edit-stock', [MainController::class, 'editStock'])->middleware(['auth'])->name('edit-stock');
+
+
+/*Route::get('/stock', function () {
     return view('stock');
-})->middleware(['auth'])->name('stock');
+})->middleware(['auth'])->name('stock');*/
 
 /*Route::get('/manage-stock-category', function () {
     return view('categoryStock');
