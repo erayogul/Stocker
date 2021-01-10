@@ -22,6 +22,7 @@ try {
     require('admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js');
     require('admin-lte/plugins/datatables-buttons/js/buttons.print.min.js');
     require('admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js');
+   // require('admin-lte/dist/js/demo.js');
 
 
 

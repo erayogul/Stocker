@@ -26,7 +26,7 @@
                         @foreach($categories as $category)
                             <tr>
                                 <td>{{$category->category_name}}</a></td>
-                                <td>50</td>
+                                <td>{{count_stocks_in_category($category->category_id)}}</td>
                                 <td>
                                     <a href="#" class="edit-stock-category-button" data-id="{{ $category->id }}" data-name="{{ $category->category_name }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Record" >
                                         <i class="fas fa-edit blue"  style="font-size: 20px;margin-right: 10px;"></i>
