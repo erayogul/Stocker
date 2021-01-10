@@ -40,10 +40,10 @@
                                             <i class="fas fa-user"></i> View Profile
                                         </a>
                                         <a href="{{ route('employeeEdit',$user->id) }}" class="btn btn-sm bg-teal">
-                                            <i class="fas fa-user"></i> Edit
+                                            <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <a href="#"  class="btn btn-sm btn-danger">
-                                            <i class="fas fa-comments"></i> Delete
+                                            <i class="fas fa-trash"></i> Delete
                                         </a>
                                     </div>
                                 </div>

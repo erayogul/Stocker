@@ -52,14 +52,13 @@ Route::get('/change-stock', [MainController::class, 'changeStock'])->middleware(
 
 Route::get('/edit-stock', [MainController::class, 'editStock'])->middleware(['auth'])->name('edit-stock');
 
+Route::get('/create-supplier', [MainController::class, 'createStock'])->middleware(['auth'])->name('create-supplier');
 
-/*Route::get('/stock', function () {
-    return view('stock');
-})->middleware(['auth'])->name('stock');*/
 
-/*Route::get('/manage-stock-category', function () {
-    return view('categoryStock');
-})->middleware(['auth'])->name('manage-stock-category');*/
+Route::get('/suppliers', function () {
+    return view('suppliers');
+})->middleware(['auth'])->name('suppliers');
+
 
 
 

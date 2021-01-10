@@ -72,7 +72,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('orders') }}" class="nav-link {{ request()->path() =='orders' ? "active" : "" }}">
+            <a href="{{ route('suppliers') }}" class="nav-link {{ request()->path() =='suppliers' ? "active" : "" }}">
               <i class="nav-icon fas fa-building"></i>
               <p>
                 Tedarikçiler
