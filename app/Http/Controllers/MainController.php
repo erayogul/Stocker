@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Stock;
 use App\Models\Stock_categories;
+use App\Models\Suppliers;
 use View;
 
 
@@ -154,4 +155,50 @@ class MainController extends Controller
         ]);
         return redirect()->route('stock');
     }
+
+    public function createSuppiler(Request $request)
+    {
+        if ($request->action == 1) {
+            $suppliers = Suppliers::findOrFail($request->id);
+            $suppliers->update([
+                'company_name' => $request->company_name,
+                'company_adress' => $request->company_adress,
+                'company_tel' => $request->company_tel,
+                'company_mail' => $request->company_mail,
+                'contact_name' => $request->contact_name,
+                'contact_tel' => $request->contact_tel,
+                'contact_mail' => $request->contact_mail,
+            ]);
+        } else {
+            $suppliers = Suppliers::create([
+                'company_name' => $request->company_name,
+                'company_adress' => $request->company_adress,
+                'company_tel' => $request->company_tel,
+                'company_mail' => $request->company_mail,
+                'contact_name' => $request->contact_name,
+                'contact_tel' => $request->contact_tel,
+                'contact_mail' => $request->contact_mail,
+            ]);
+        }
+        return redirect()->route('suppliers');
+    }
+
+    public function getSuppliers(Request $request)
+    {
+        $suppliers = Suppliers::get();
+        return view('suppliers', compact('suppliers'));
+    }
+
+    public function deleteSupplier(Request $request)
+    {
+        $suppliers = Suppliers::findOrFail($request->id);
+        $suppliers->delete();
+        return redirect()->route('suppliers');
+    }
+
+    
+
+    
+
+    
 }

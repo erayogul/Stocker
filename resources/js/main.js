@@ -30,14 +30,15 @@ $(document).ready(function () {
         });
     });
 
-    document.getElementById("stockNotificationSwitch").addEventListener("change", stockNotificationShowHide);
+    //document.getElementById("stockNotificationSwitch").addEventListener("change", stockNotificationShowHide);
 
-    function stockNotificationShowHide() {
+    window.stockNotificationShowHide = function () {
         var status = document.getElementById("stockNotificationSwitch").checked;
         var div = document.getElementById("stockNotificationArea");
         var status = document.getElementById("stockNotificationSwitch").checked;
         status ? div.style.display = "block" : div.style.display = "none";
     }
+
 
     $('.delete-stock-button').on('click', function () {
         var id = $(this).closest('a').attr("data-id");
@@ -159,6 +160,51 @@ $(document).ready(function () {
         $('#notificationUser-add-edit').val("");
         $('#notificationQuantity-add-edit').val("");
     }
+
+
+    //// Suppliers
+
+    $('.create-suppliers-button').on('click', function () {
+        $(".modal-title-suppliers").text("Tedarikçi Oluştur");
+
+        $('#modal-suppliers').modal({
+            show: true
+        });
+    });
+
+    $('.edit-suppliers-button').on('click', function () {
+        $(".modal-title-suppliers").text("Tedarikçi Düzenle");
+        var id = $(this).closest('a').attr("data-id");
+        var action = $(this).closest('a').attr("data-action");
+        var company_name = $(this).closest('a').attr("data-company_name");
+        var company_adress = $(this).closest('a').attr("data-company_adress");
+        var company_tel = $(this).closest('a').attr("data-company_tel");
+        var company_mail = $(this).closest('a').attr("data-company_mail");
+        var contact_name = $(this).closest('a').attr("data-contact_name");
+        var contact_tel = $(this).closest('a').attr("data-contact_tel");
+        var contact_mail = $(this).closest('a').attr("data-contact_mail");
+        $('#id-supplier').val(id);
+        $('#actionType').val(action);
+        $('#company_name').val(company_name);
+        $('#company_adress').val(company_adress);
+        $('#company_tel').val(company_tel);
+        $('#company_mail').val(company_mail);
+        $('#contact_name').val(parseInt(contact_name));
+        $('#contact_name').val(contact_name);
+        $('#contact_tel').val(contact_tel);
+        $('#contact_mail').val(contact_mail);
+        $('#modal-suppliers').modal({
+            show: true
+        });
+    });
+
+    $('.delete-suppliers-button').on('click', function () {
+        var id = $(this).closest('a').attr("data-id");
+        $('#id-suppliers-delete').val(id);
+        $('#modal-suppliers-delete').modal({
+            show: true
+        });
+    });
 
 });
 

@@ -120,7 +120,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" id="stockNotificationSwitch" name="notification" class="custom-control-input stockNotificationSwitch">
+                                            <input type="checkbox" id="stockNotificationSwitch" onchange="stockNotificationShowHide();" name="notification" class="custom-control-input stockNotificationSwitch">
                                             <label class="custom-control-label" for="stockNotificationSwitch">Bildirim</label>
                                         </div>
                                     </div>

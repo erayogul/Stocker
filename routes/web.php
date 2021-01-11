@@ -52,12 +52,12 @@ Route::get('/change-stock', [MainController::class, 'changeStock'])->middleware(
 
 Route::get('/edit-stock', [MainController::class, 'editStock'])->middleware(['auth'])->name('edit-stock');
 
-Route::get('/create-supplier', [MainController::class, 'createStock'])->middleware(['auth'])->name('create-supplier');
+Route::get('/suppliers', [MainController::class, 'getSuppliers'])->middleware(['auth'])->name('suppliers');
 
+Route::get('/create-supplier', [MainController::class, 'createSuppiler'])->middleware(['auth'])->name('create-supplier');
 
-Route::get('/suppliers', function () {
-    return view('suppliers');
-})->middleware(['auth'])->name('suppliers');
+Route::get('/delete-supplier', [MainController::class, 'deleteSupplier'])->middleware(['auth'])->name('delete-supplier');
+
 
 
 
