@@ -102,7 +102,8 @@ class MainController extends Controller
         $categories = Stock_categories::get();
         $users = User::get();
         $stocks = Stock::get();
-        return view('stock', compact('categories', 'users', 'stocks'));
+        $suppliers = Suppliers::get();
+        return view('stock', compact('categories', 'users', 'stocks','suppliers'));
     }
 
     public function createStock(Request $request)
@@ -118,7 +119,6 @@ class MainController extends Controller
                 'category' => $request->category,
                 'supplier' => $request->supplier,
                 'location' => $request->location,
-                'quantity' => $request->quantity,
                 'notification' => $notification,
                 'notificationUser' => $request->notificationPerson,
                 'notificationQuantity' => $request->notificationQuantity,

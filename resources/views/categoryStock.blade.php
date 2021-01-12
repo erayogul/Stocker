@@ -7,8 +7,8 @@
             <div style="margin-top: 25px;" class="card">
                 <div class="card-body">
 
-                
-                <div class="card-tools" style="margin:10px;">
+
+                    <div class="card-tools" style="margin:10px;">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-create">
                             <i class="fas fa-cubes"></i>
                             Kategori Oluştur
@@ -23,15 +23,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
+                            @foreach($categories as $category)
                             <tr>
                                 <td>{{$category->category_name}}</a></td>
                                 <td>{{count_stocks_in_category($category->category_id)}}</td>
                                 <td>
-                                    <a href="#" class="edit-stock-category-button" data-id="{{ $category->id }}" data-name="{{ $category->category_name }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Record" >
-                                        <i class="fas fa-edit blue"  style="font-size: 20px;margin-right: 10px;"></i>
+                                    <a href="#" class="edit-stock-category-button" data-id="{{ $category->id }}" data-name="{{ $category->category_name }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Record">
+                                        <i class="fas fa-edit blue" style="font-size: 20px;margin-right: 10px;"></i>
                                     </a>
-                                    <a href="#" class="delete-stock-category-button" data-id="{{ $category->id }}" data-placement="top" title="" data-original-title="Delete Record">
+                                    <a href="#" class="delete-stock-category-button" data-id="{{ $category->id }}" data-count="{{count_stocks_in_category($category->category_id)}}" data-placement="top" title="" data-original-title="Delete Record">
                                         <i class="fas fa-trash red" style="font-size: 20px;margin-right: 10px; color:red; "></i>
                                     </a>
                                 </td>
@@ -40,7 +40,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                            <th>Kategori</th>
+                                <th>Kategori</th>
                                 <th>Ürün Sayısı</th>
                                 <th>İşlem</th>
                             </tr>
@@ -49,96 +49,99 @@
 
                 </div>
                 <div class="modal fade" id="modal-create">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Kategori Oluştur</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="{{ route('createStockCategory') }}">
-                                    <div class="modal-body">
-                                        <div class="form-group">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kategori Oluştur</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{ route('createStockCategory') }}">
+                                <div class="modal-body">
+                                    <div class="form-group">
 
-                                            <label>Kategori Adı</label>
-                                            <input type="text" name="category_name" required="required" placeholder="Kategori Adı" class="form-control" />
-                                        </div>
+                                        <label>Kategori Adı</label>
+                                        <input type="text" name="category_name" required="required" placeholder="Kategori Adı" class="form-control" />
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                            İptal
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">
-                                            Oluştur
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-                    <div class="modal fade" id="modal-edit">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Kategori Güncelle</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                        İptal
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Oluştur
                                     </button>
                                 </div>
-                                <form action="{{ route('edit-stock-category') }}">
-                                    <div class="modal-body">
-                                        <div class="form-group">
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <div class="modal fade" id="modal-edit">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kategori Güncelle</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="{{ route('edit-stock-category') }}">
+                                <div class="modal-body">
+                                    <div class="form-group">
 
-                                            <label>Kategori Adı</label>
-                                            <input type="hidden" name="id" id="id-edit" >
-                                            <input type="text" name="category_name" id="category_name" required="required" placeholder="Kategori Adı" class="form-control" />
-                                        </div>
+                                        <label>Kategori Adı</label>
+                                        <input type="hidden" name="id" id="id-edit">
+                                        <input type="text" name="category_name" id="category_name" required="required" placeholder="Kategori Adı" class="form-control" />
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                            İptal
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">
-                                            Güncelle
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
-                    <!-- /.modal -->
-                    <div class="modal fade" id="modal-delete">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Silmek istediğinize emin misiniz?</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                        İptal
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Güncelle
                                     </button>
                                 </div>
-                                <form action="{{ route('delete-stock-category') }}">
-                                        <input type="hidden" name="id" id="id-delete" >
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
-                                            İptal
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">
-                                            Sil
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.modal-content -->
+                            </form>
                         </div>
-                        <!-- /.modal-dialog -->
+                        <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal -->
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <div class="modal fade" id="modal-delete">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Silmek istediğinize emin misiniz?</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="category-delete-form-label">
+                                <label style="color: red;" > * Bu kategoriye ait ürün bulunduğundan dolayı bu kategoriyi silemezsiniz.</label>
+                            </div>
+                            <form action="{{ route('delete-stock-category') }}">
+                                <input type="hidden" name="id" id="id-delete">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                        İptal
+                                    </button>
+                                    <button name="category-delete-form-button" id="category-delete-form-button" type="submit" class="btn btn-danger">
+                                        Sil
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
             </div>
         </div>
     </div>

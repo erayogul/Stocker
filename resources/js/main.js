@@ -14,6 +14,15 @@ $(document).ready(function () {
 
     $('.delete-stock-category-button').on('click', function () {
         var id = $(this).closest('a').attr("data-id");
+        var count = $(this).closest('a').attr("data-count");
+        var deleteButton = document.getElementById("category-delete-form-button");
+        var deleteLabel = document.getElementById("category-delete-form-label");
+        deleteLabel.style.display = "none";
+        deleteButton.disabled=false;
+        if(count>0){
+            deleteButton.disabled=true;
+            deleteLabel.style.display = "block";
+        }
         $('#id-delete').val(id);
         $('#modal-delete').modal({
             show: true
@@ -104,7 +113,6 @@ $(document).ready(function () {
         var category = $(this).closest('a').attr("data-category");
         var supplier = $(this).closest('a').attr("data-supplier");
         var location = $(this).closest('a').attr("data-location");
-        var quantity = $(this).closest('a').attr("data-quantity");
         var notification = $(this).closest('a').attr("data-notification");
         var notificationUser = $(this).closest('a').attr("data-notificationUser");
         var notificationQuantity = $(this).closest('a').attr("data-notificationQuantity");
@@ -115,7 +123,6 @@ $(document).ready(function () {
         $('#category-add-edit').val(parseInt(category));
         $('#supplier-add-edit').val(supplier);
         $('#location-add-edit').val(location);
-        $('#quantity-add-edit').val(quantity);
         if (notification == 1) {
             document.getElementById("stockNotificationSwitch").checked = true;
             var div = document.getElementById("stockNotificationArea");
@@ -153,7 +160,6 @@ $(document).ready(function () {
         $('#category-add-edit').val("");
         $('#supplier-add-edit').val("");
         $('#location-add-edit').val("");
-        $('#quantity-add-edit').val("");
         document.getElementById("stockNotificationSwitch").checked = false;
         var div = document.getElementById("stockNotificationArea");
         div.style.display = "none";

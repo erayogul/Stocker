@@ -13,7 +13,7 @@
                         </button>
                     </div>
 
-                    <table id="table_id" class="table table-striped table-bordered display nowrap" >
+                    <table id="table_id" class="table table-striped table-bordered display nowrap">
                         <thead>
                             <tr>
                                 <th>Kategori</th>
@@ -32,7 +32,7 @@
                                 <td><a href="#">{{get_category_name($stock->category)}}</a></td>
                                 <td>{{$stock->stock_id}}</td>
                                 <td>{{$stock->name}}</td>
-                                <td>{{$stock->supplier}}</td>
+                                <td>{{get_supplier_name($stock->supplier)}}</td>
                                 <td>{{$stock->location}}</td>
                                 <td>{{$stock->quantity}}</td>
                                 <td>
@@ -108,15 +108,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tedarikçi</label>
-                                        <input type="text" name="supplier" id="supplier-add-edit" placeholder="Tedarikçi" class="form-control" />
+                                        <select name="supplier" id="supplier-add-edit" placeholder="Tedarikçi" class="form-control">
+                                            <option value="Yok" selected>Yok</option>
+                                            @foreach($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}">{{$supplier->company_name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Lokasyon</label>
                                         <input type="text" name="location" id="location-add-edit" placeholder="Lokasyon" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Miktar</label>
-                                        <input type="text" name="quantity" id="quantity-add-edit" placeholder="Miktar" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
