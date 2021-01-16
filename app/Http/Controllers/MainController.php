@@ -149,10 +149,13 @@ class MainController extends Controller
 
     public function changeStock(Request $request)
     {
+        //dd($request);
         $stock = Stock::findOrFail($request->id);
         $stock->update([
             'quantity' => $request->newStockQuantity,
         ]);
+        $log = stockLoging($request->id, $request->changeQuantity, $request->oldStockQuantity, $request->newStockQuantity );
+        $notification = stockNotification($request->id, $request->changeQuantity, $request->newStockQuantity);
         return redirect()->route('stock');
     }
 

@@ -1,5 +1,27 @@
 $(document).ready(function () {
 
+    window.tableFilter = function () {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
     $('#table_id').dataTable({
         aLengthMenu: [
             [10, 25, 50, 100, 200, -1],
@@ -9,6 +31,7 @@ $(document).ready(function () {
             selector: 'td:nth-child(2)'
         },
         responsive: true,
+        mark: true
 
     });
 
@@ -18,9 +41,9 @@ $(document).ready(function () {
         var deleteButton = document.getElementById("category-delete-form-button");
         var deleteLabel = document.getElementById("category-delete-form-label");
         deleteLabel.style.display = "none";
-        deleteButton.disabled=false;
-        if(count>0){
-            deleteButton.disabled=true;
+        deleteButton.disabled = false;
+        if (count > 0) {
+            deleteButton.disabled = true;
             deleteLabel.style.display = "block";
         }
         $('#id-delete').val(id);
@@ -39,7 +62,6 @@ $(document).ready(function () {
         });
     });
 
-    //document.getElementById("stockNotificationSwitch").addEventListener("change", stockNotificationShowHide);
 
     window.stockNotificationShowHide = function () {
         var status = document.getElementById("stockNotificationSwitch").checked;
