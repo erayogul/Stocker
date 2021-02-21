@@ -130,7 +130,7 @@ class MainController extends Controller
                 'category' => $request->category,
                 'supplier' => $request->supplier,
                 'location' => $request->location,
-                'quantity' => $request->quantity,
+                'quantity' => 0,
                 'notification' => $notification,
                 'notificationUser' => $request->notificationPerson,
                 'notificationQuantity' => $request->notificationQuantity,

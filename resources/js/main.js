@@ -163,7 +163,7 @@ $(document).ready(function () {
         });
 
     });
-
+                
     $('.create-stock-button').on('click', function () {
         clearStockModal();
         $(".modal-title-add-edit").text("Ürün Oluştur");
